@@ -29,8 +29,8 @@ This project analyzes water station capacity and operational efficiency in Qatar
 - Feel free to adapt the queries or dashboards for similar datasets
 ---
 ## 🙌 Acknowledgements
-- [Qatar Open Data Portal](https://data.gov.qa) — data source inspiration  
-- KAHRAMAA (Qatar General Electricity & Water Corporation) — internship scenario inspiration  
+- [Qatar Open Data Portal](https://www.data.gov.qa/) - Data source
+- KAHRAMAA (Qatar General Electricity & Water Corporation) -  Data provider
 ---
 ## 📄 License
 This project is open-source under the [MIT License](LICENSE).
