@@ -1,8 +1,10 @@
-# 💧 Qatar Water Reservoir Capacity Analysis (Kahramaa, 2025)
+# 💧 Qatar Water Reservoir Capacity Analysis (Kahramaa data, 2025 internship)
 
-Internship project: installed reservoir/pumping-station storage capacity in Qatar,
+Internship project (2025): installed reservoir/pumping-station storage capacity in Qatar,
 analysed with Python (pandas, scikit-learn), PostgreSQL and a dashboard.
-The data is the **2023** Kahramaa release; the reporting year is unchanged.
+The analysis was done in 2025 on Kahramaa station data whose
+**reporting year is 2023** (the source file is named `...-2023.xlsx`, and it records stations commissioned
+in October and December 2023). The "2023" in chart titles and the `data_year` column refers to that data year.
 
 ![Capacity by station](charts/01_capacity_by_station.png)
 
