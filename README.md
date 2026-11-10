@@ -118,10 +118,3 @@ sql/         PostgreSQL schema, validation and analysis
 charts/      Static PNG charts
 dashboard/   Interactive dashboard, Power BI file and correction guide
 ```
-
-## Notes
-
-The `.pbix` is retained as the original Power BI artifact. Binary Power BI
-editing is not performed by the Python pipeline; follow `dashboard/POWERBI_FIXES.md`
-in Power BI Desktop. Do not replace the historical data year with the internship
-or current calendar year.
