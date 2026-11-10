@@ -1,0 +1,9 @@
+# Full toolchain to rebuild data, models and charts (not needed to run the app).
+-r requirements.txt
+numpy
+openpyxl
+scikit-learn
+matplotlib
+requests
+python-dotenv
+kaggle  # optional; only for --include-kaggle downloads

@@ -1,9 +1,3 @@
-pandas
-numpy
-openpyxl
-scikit-learn
-matplotlib
-plotly
-requests
-python-dotenv
-kaggle  # optional; only for --include-kaggle downloads
+streamlit>=1.50
+pandas>=2.0
+plotly>=5.20
