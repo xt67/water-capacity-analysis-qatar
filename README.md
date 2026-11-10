@@ -1,4 +1,4 @@
-# 💧 Qatar Water Reservoir Capacity Analysis (Kahramaa, 2023)
+# 💧 Qatar Water Reservoir Capacity Analysis (Kahramaa, 2025)
 
 Internship project: installed reservoir/pumping-station storage capacity in Qatar,
 analysed with Python (pandas, scikit-learn), PostgreSQL and a dashboard.
