@@ -1,0 +1,40 @@
+station_name,total_installed_mig,non_operating_mig,operating_mig,total_installed_m3,non_operating_m3,operating_m3,remarks,status,station_type,commissioned_on,data_year
+Wukair,36.0,0,36.0,163636.0,0,163636.0,No remarks,Operational,Standard RPS,,2023
+New Salwa,30.0,0,30.0,136364.0,0,136364.0,No remarks,Operational,Standard RPS,,2023
+Bani Hajr,36.0,0,36.0,163636.0,0,163636.0,No remarks,Operational,Standard RPS,,2023
+Muaither,105.0,0,105.0,477273.0,0,477273.0,No remarks,Operational,Standard RPS,,2023
+Wakrah,10.0,0,10.0,45455.0,0,45455.0,No remarks,Operational,Standard RPS,,2023
+Messaieed Town,24.0,0,24.0,109091.0,0,109091.0,No remarks,Operational,Standard RPS,,2023
+Umm Salal 1,6.0,0,6.0,27273.0,0,27273.0,No remarks,Operational,Standard RPS,,2023
+Shahaniyah 2,12.0,0,12.0,54545.0,0,54545.0,No remarks,Operational,Standard RPS,,2023
+Shahaniyah 3,12.0,0,12.0,54545.0,0,54545.0,No remarks,Operational,Standard RPS,,2023
+Pearl of Qatar,4.0,0,4.0,18182.0,0,18182.0,No remarks,Operational,Standard RPS,,2023
+Jeryan,1.0,0,1.0,4545.0,0,4545.0,No remarks,Operational,Standard RPS,,2023
+Umm Birka PRPS,194.0,0,194.0,881818.0,0,881818.0,Mega RPS,Operational,Mega PRPS,,2023
+Abu Nakhla PRPS,194.0,0,194.0,881818.0,0,881818.0,Mega RPS,Operational,Mega PRPS,,2023
+Doha South,84.0,0,84.0,381818.0,0,381818.0,No remarks,Operational,Standard RPS,,2023
+Mesaimeer,108.0,0,108.0,490909.0,0,490909.0,No remarks,Operational,Standard RPS,,2023
+Salwa Industrial,51.0,0,51.0,231818.0,0,231818.0,No remarks,Operational,Standard RPS,,2023
+Umm Qarn,71.0,0,71.0,322727.0,0,322727.0,No remarks,Operational,Standard RPS,,2023
+Al Khor 1,4.0,0,4.0,18182.0,0,18182.0,No remarks,Operational,Standard RPS,,2023
+Al Khor 3,18.0,0,18.0,81818.0,0,81818.0,No remarks,Operational,Standard RPS,,2023
+Umm Salal 2,18.0,0,18.0,81818.0,0,81818.0,No remarks,Operational,Standard RPS,,2023
+Small & Medium,7.97,0,7.97,36209.0,0,36209.0,No remarks,Operational,Standard RPS,,2023
+Labor City,6.6,0,6.6,30000.0,0,30000.0,No remarks,Operational,Standard RPS,,2023
+Lusail RPS4,6.6,0,6.6,30000.0,0,30000.0,No remarks,Operational,Standard RPS,,2023
+Lusail RPS2,8.36,0,8.36,38000.0,0,38000.0,No remarks,Operational,Standard RPS,,2023
+Rawdat Rashed PRPS,386.0,0,386.0,1754545.0,0,1754545.0,Mega RPS,Operational,Mega PRPS,,2023
+Airport,21.0,0,21.0,95455.0,0,95455.0,No remarks,Operational,Standard RPS,,2023
+Old Salwa,0.0,0,0.0,0.0,0,0.0,All reservoirs demolished for upgrading,Demolished (upgrade),Standard RPS,,2023
+Garrafa,50.0,0,50.0,227273.0,0,227273.0,No remarks,Operational,Standard RPS,,2023
+West Bay,56.0,0,56.0,254545.0,0,254545.0,No remarks,Operational,Standard RPS,,2023
+Duhail,142.0,0,142.0,645455.0,0,645455.0,No remarks,Operational,Standard RPS,,2023
+Messaieed Industrial,28.0,0,28.0,127273.0,0,127273.0,No remarks,Operational,Standard RPS,,2023
+Al Khor 2,6.0,0,6.0,27273.0,0,27273.0,No remarks,Operational,Standard RPS,,2023
+Madinat Shamal,10.0,0,10.0,45455.0,0,45455.0,No remarks,Operational,Standard RPS,,2023
+Guwairiyah,1.0,0,1.0,4545.0,0,4545.0,No remarks,Operational,Standard RPS,,2023
+Peninsula,1.0,0,1.0,4545.0,0,4545.0,No remarks,Operational,Standard RPS,,2023
+Kaaban,6.0,0,6.0,27273.0,0,27273.0,New RPS commissioned on 25.10.2023,Operational,Standard RPS,2023-10-25,2023
+Lusail RPS1,14.0,0,14.0,63636.0,0,63636.0,New RPS commissioned on 05.12.2023,Operational,Standard RPS,2023-12-05,2023
+Umm Salal PRPS,386.0,0,386.0,1754545.0,0,1754545.0,Mega RPS,Operational,Mega PRPS,,2023
+Thumama PRPS,261.0,0,261.0,1186364.0,0,1186364.0,Mega RPS,Operational,Mega PRPS,,2023

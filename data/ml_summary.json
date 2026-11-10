@@ -1,0 +1,40 @@
+{
+  "n_stations": 38,
+  "best_k": 4,
+  "silhouette": {
+    "kmeans": {
+      "2": 0.568,
+      "3": 0.531,
+      "4": 0.606,
+      "5": 0.587,
+      "6": 0.564
+    },
+    "agglomerative": {
+      "2": 0.559,
+      "3": 0.587,
+      "4": 0.548,
+      "5": 0.586,
+      "6": 0.575
+    }
+  },
+  "tier_counts": {
+    "Small": 14,
+    "Large": 12,
+    "Very large": 9,
+    "Very small": 3
+  },
+  "tier_capacity_share_pct": {
+    "Large": 18.2,
+    "Small": 4.7,
+    "Very large": 77.0,
+    "Very small": 0.1
+  },
+  "gini": 0.673,
+  "top5_share_pct": 58.8,
+  "top10_share_pct": 79.9,
+  "outliers": [
+    "Jeryan",
+    "Guwairiyah",
+    "Peninsula"
+  ]
+}

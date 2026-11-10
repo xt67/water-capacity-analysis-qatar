@@ -1,0 +1,9 @@
+pandas
+numpy
+openpyxl
+scikit-learn
+matplotlib
+plotly
+requests
+python-dotenv
+kaggle  # only for src/fetch_external.py
