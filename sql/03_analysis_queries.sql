@@ -55,3 +55,20 @@ SELECT station_name, total_installed_m3
 FROM water_station_capacity
 ORDER BY total_installed_m3 DESC
 LIMIT 5;
+
+
+-- 7. Reconcile station-level subtotal to the published KAHRAMAA national total
+-- Official 2023 annual statistics: 2,417.2 MIG / 10,987,273 m3.
+WITH station_total AS (
+    SELECT SUM(total_installed_mig) AS station_mig,
+           SUM(total_installed_m3) AS station_m3
+    FROM water_station_capacity
+    WHERE status = 'Operational'
+)
+SELECT station_mig,
+       station_m3,
+       2417.2::NUMERIC AS official_national_mig,
+       10987273::NUMERIC AS official_national_m3,
+       station_mig - 2417.2 AS variance_mig,
+       station_m3 - 10987273 AS variance_m3
+FROM station_total;

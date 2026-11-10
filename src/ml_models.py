@@ -55,15 +55,20 @@ def main() -> None:
     names = TIER_NAMES[best_k]
     op["tier"] = op["cluster"].map({c: names[i] for i, c in enumerate(order)})
 
-    # 2. outliers ---------------------------------------------------------------
-    logc = np.log1p(op["total_installed_m3"])
-    mad = np.median(np.abs(logc - logc.median()))
-    op["robust_z"] = 0.6745 * (logc - logc.median()) / mad
-    iso = IsolationForest(n_estimators=300, contamination="auto", random_state=SEED)
-    iso.fit(X)
-    op["anomaly_score"] = -iso.score_samples(X)  # higher = more unusual
-    op["is_outlier"] = (op["robust_z"].abs() > 3.5) | (
-        op["anomaly_score"] > op["anomaly_score"].quantile(0.90))
+    # 2. robust size rarity ------------------------------------------------------
+    # This is intentionally NOT called an operational anomaly detector: with
+    # capacity alone, it can only identify unusually small/large installations.
+    logc = np.log1p(op["total_installed_m3"].astype(float))
+    mad = float(np.median(np.abs(logc - logc.median())))
+    if mad == 0:
+        op["robust_z"] = 0.0
+    else:
+        op["robust_z"] = 0.6745 * (logc - logc.median()) / mad
+    op["size_rarity_flag"] = op["robust_z"].abs() > 3.5
+    op["size_rarity_label"] = np.select(
+        [op["robust_z"] < -3.5, op["robust_z"] > 3.5],
+        ["Unusually small capacity", "Unusually large capacity"],
+        default="Within robust size range")
 
     # 3. concentration ----------------------------------------------------------
     total = op["total_installed_m3"].sum()
@@ -81,10 +86,12 @@ def main() -> None:
         "gini": round(gini(op["total_installed_m3"].to_numpy()), 3),
         "top5_share_pct": round(ranked["total_installed_m3"].head(5).sum() / total * 100, 1),
         "top10_share_pct": round(ranked["total_installed_m3"].head(10).sum() / total * 100, 1),
-        "outliers": op.loc[op["is_outlier"], "station_name"].tolist(),
+        "size_rarity_flags": op.loc[op["size_rarity_flag"], "station_name"].tolist(),
+        "interpretation": "Capacity rarity only; not operational faults or failures.",
     }
     out_cols = ["station_name", "total_installed_mig", "total_installed_m3", "station_type",
-                "tier", "share_pct", "cum_share_pct", "robust_z", "anomaly_score", "is_outlier"]
+                "tier", "share_pct", "cum_share_pct", "robust_z",
+                "size_rarity_flag", "size_rarity_label"]
     op[out_cols].sort_values("total_installed_m3", ascending=False).round(3).to_csv(
         ROOT / "data" / "station_clusters.csv", index=False)
     (ROOT / "data" / "ml_summary.json").write_text(json.dumps(summary, indent=2))

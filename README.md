@@ -1,63 +1,118 @@
-# 💧 Qatar Water Reservoir Capacity Analysis (Kahramaa data, 2025 internship)
+# 💧 Qatar Water Reservoir Capacity Analysis
 
-Internship project (2025): installed reservoir/pumping-station storage capacity in Qatar,
-analysed with Python (pandas, scikit-learn), PostgreSQL and a dashboard.
-The analysis was done in 2025 on Kahramaa station data whose
-**reporting year is 2023** (the source file is named `...-2023.xlsx`, and it records stations commissioned
-in October and December 2023). The "2023" in chart titles and the `data_year` column refers to that data year.
+**Internship:** KAHRAMAA, Data Analyst Intern, **July 2025**
+**Data/reporting period:** **2023** (historical snapshot; intentionally not refreshed to today's date)
+
+This project analyses Qatar's water reservoir and pumping-station storage capacity
+using Python, pandas, scikit-learn, PostgreSQL, Power BI and an interactive Plotly
+dashboard. The internship was completed in July 2025; the capacity observations
+remain the 2023 data supplied by KAHRAMAA.
 
 ![Capacity by station](charts/01_capacity_by_station.png)
 
-## Key findings
-- **2,415.5 MIG** (10.98 M m³) of installed storage across **38 operational stations**; Old Salwa is
-  under upgrade (all reservoirs demolished) and counts as 0.
-- **Highly concentrated** (Gini 0.67): the 5 Mega PRPS hold 58.8 %, the top 11 stations hold 80 %.
-- The total sits almost exactly on the **2,400 MIG** target announced in 2015 for the Water Security
-  Mega Reservoirs programme ([Gulf Times](https://www.gulf-times.com/story/430842/qr17bn-project-to-boost-water-storage-capacity/amp)).
-- Against national production capacity of **537 MIGD** ([The Peninsula, Feb 2024](https://thepeninsulaqatar.com/article/25/02/2024/qatars-reserve-water-capacity-hit-20-in-2023)),
-  storage covers roughly **4.5 days** of production. Derived here by dividing the two figures; it is a
-  rough indicator, not an official Kahramaa metric.
-- No station reports non-operating capacity, so "utilization" is 100 % everywhere. The earlier
-  utilization analysis was dropped.
+## Executive findings
 
-## What changed in this version
-| Area | Fix |
+- The cleaned station file contains **39 records**: **38 operational stations**
+  plus Old Salwa, whose reservoirs were demolished for upgrading.
+- The 38 operational KM station records sum to **2,415.53 MIG** and
+  **10,979,662 m³**. This is the station-dataset subtotal, not the official
+  national all-storage total.
+- KAHRAMAA's Annual Statistics Report 2023 records national water storage of
+  **2,417.2 MIG / 10,987,273 m³**. The difference from this station-level file
+  is **1.67 MIG / 7,611 m³** (about 0.07%). It is retained as a reconciliation
+  variance rather than allocated to stations without source evidence.
+- Storage is concentrated: the top five stations hold about **58.8%** of the
+  station-file subtotal; the Gini coefficient is about **0.673**.
+- The model identifies four capacity tiers. These are descriptive groupings,
+  not predictions of demand, station failure or operational performance.
+
+Official sources:
+- [KAHRAMAA Annual Statistics Report 2023](https://www.km.com.qa/MediaCenter/Publications/SR2023-English.pdf)
+- [Qatar Open Data: Water Storage in KM Reservoirs (2023)](https://www.data.gov.qa/explore/dataset/water-storage-in-km-reservoirs-2023/)
+- [Qatar Open Data: Total Water Storage by Year](https://www.data.gov.qa/explore/dataset/total-water-storage-by-year/table/)
+- [Qatar Open Data: Ground Tanks](https://www.data.gov.qa/explore/dataset/water-storage-in-ground-tanks-2023/)
+- [Qatar Open Data: Elevated Tanks](https://www.data.gov.qa/explore/dataset/water-storage-in-elevated-tanks-2023/)
+- [Qatar Open Data: IWPP Reservoirs](https://www.data.gov.qa/explore/dataset/water-storage-in-iwpp-reservoirs-2023/)
+- [World Bank indicator metadata: freshwater withdrawals](https://databank.worldbank.org/metadataglossary/world-development-indicators/series/ER.H2O.FWTL.ZS)
+
+## Work completed in this repository
+
+| Area | Implementation |
 |---|---|
-| Data | Rebuilt from the raw XLSX by `src/build_dataset.py` with checks (installed = operating + non-operating, MIG↔m³ within 0.1 %). Old Salwa's null m³ resolved to 0 and flagged `Demolished (upgrade)`; added `status`, `station_type`, `commissioned_on`, `data_year`. `…csv.csv` renamed to `.csv`. |
-| ML | `src/ml_models.py`: K-Means (k=4 by silhouette 0.61) and agglomerative tiering, Isolation Forest + MAD outliers (Jeryan, Guwairiyah, Peninsula, the smallest stations), Gini / Pareto concentration. |
-| Charts | Five PNGs in `charts/` and an interactive `dashboard/dashboard.html`. The Power BI KPI cards were wrong; see `dashboard/POWERBI_FIXES.md`. |
-| SQL | Split into `01_create_table`, `02_validate`, `03_analysis_queries`; added constraints and window-function queries. |
-| README | Fixed paths that pointed to non-existent files. |
+| Date integrity | Internship date is July 2025; source reporting year remains 2023 in filenames, `data_year`, charts and SQL. |
+| Data cleaning | `src/build_dataset.py` rebuilds the station CSV from the source XLSX and validates capacity arithmetic and MIG-to-m³ conversion. |
+| ML | `src/ml_models.py` performs unsupervised capacity tiering, robust size-rarity checks and concentration analysis. No predictive model is claimed because the source has only one capacity snapshot. |
+| Visuals | Five static PNG charts plus the interactive `dashboard/dashboard.html`. |
+| Power BI | `dashboard/POWERBI_FIXES.md` contains corrected DAX measures and explicit guidance to distinguish the station subtotal from the national aggregate. |
+| SQL | Table creation, validation, national summary, Pareto ranking, type mix and commissioning queries in `sql/`. |
+| External data | `src/fetch_external.py` downloads official Qatar Open Data exports and World Bank context series. Kaggle is optional and requires a verified dataset slug and personal credentials in local `.env`. |
 
-## Honest limits of the ML
-Only 38 stations with a single numeric feature (capacity) are available, with no time series and no
-demand data. The models are therefore **descriptive** (tiers, outliers, concentration), not
-predictive. A forecast of capacity vs. demand needs data not in this repo (population, consumption,
-production by year).
-`src/fetch_external.py` can pull World Bank population / freshwater-withdrawal data and a Kaggle
-dataset of your choice using the keys in `.env.example`. **It has not been run**: the environment
-used to prepare this version could not reach those sites. The original source is the
-[Qatar Open Data Portal](https://www.data.gov.qa/).
+## Machine-learning interpretation
 
-## Run it
+The station table has 38 operational observations and only one independent
+numeric characteristic suitable for this analysis: capacity. The m³ field is a
+unit conversion of MIG, not a second independent feature. Therefore the models
+are intentionally descriptive:
+
+1. **K-Means capacity tiers** on log-transformed capacity, with the number of
+   clusters selected by silhouette score.
+2. **Robust size rarity** on log capacity. Small stations are not labelled as
+   faults, risk or poor performance.
+3. **Storage concentration** using Pareto share and the Gini coefficient.
+
+A time-series forecast or demand model requires multiple years of comparable
+storage, production, consumption and population/demand observations. It should
+not be fabricated from this cross-sectional snapshot.
+
+## Reproduce locally
+
 ```bash
+python -m venv .venv
+# Windows: .venv\\Scripts\\activate
+# macOS/Linux: source .venv/bin/activate
 pip install -r requirements.txt
-python src/build_dataset.py   # raw XLSX -> data/water_stations_qatar_clean.csv
-python src/ml_models.py       # -> data/station_clusters.csv, data/ml_summary.json
-python src/make_charts.py     # -> charts/*.png, dashboard/dashboard.html
-```
-SQL: run `sql/01_create_table.sql`, load the CSV (`\copy` command inside), then `02_validate.sql`
-and `03_analysis_queries.sql`. The query logic was checked against the data in SQLite; run it on
-PostgreSQL to confirm.
-
-## Structure
-```
-data/        raw XLSX, clean CSV, ML outputs
-src/         build_dataset.py, ml_models.py, make_charts.py, fetch_external.py
-sql/         PostgreSQL scripts
-charts/      static charts
-dashboard/   dashboard.html (interactive), .pbix (needs refresh, see POWERBI_FIXES.md)
+python src/build_dataset.py
+python src/ml_models.py
+python src/make_charts.py
 ```
 
-## Acknowledgements & license
-Data: [Qatar Open Data Portal](https://www.data.gov.qa/) / KAHRAMAA. MIT License (see `LICENSE`).
+Optional external context downloads (internet required):
+
+```bash
+cp .env.example .env     # Windows: copy .env.example .env
+python src/fetch_external.py
+```
+
+To additionally download a Kaggle dataset, fill in `KAGGLE_USERNAME`,
+`KAGGLE_KEY` and a verified `KAGGLE_DATASET=owner/dataset-slug` in `.env`, then run:
+
+```bash
+python src/fetch_external.py --include-kaggle
+```
+
+Review Kaggle licence, provenance, schema and date coverage before using its data.
+Downloaded files are stored under `data/external/` and are ignored by Git so that
+credentials and unreviewed third-party datasets do not enter the repository.
+
+## PostgreSQL
+
+Run `sql/01_create_table.sql`, import
+`data/water_stations_qatar_clean.csv` using the documented `\\copy` command,
+then execute `sql/02_validate.sql` and `sql/03_analysis_queries.sql`.
+
+## Repository layout
+
+```text
+data/        Original 2023 XLSX, cleaned station CSV and ML outputs
+src/         Cleaning, ML, chart/dashboard generation, optional data downloads
+sql/         PostgreSQL schema, validation and analysis
+charts/      Static PNG charts
+dashboard/   Interactive dashboard, Power BI file and correction guide
+```
+
+## Notes
+
+The `.pbix` is retained as the original Power BI artifact. Binary Power BI
+editing is not performed by the Python pipeline; follow `dashboard/POWERBI_FIXES.md`
+in Power BI Desktop. Do not replace the historical data year with the internship
+or current calendar year.

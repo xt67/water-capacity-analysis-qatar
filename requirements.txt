@@ -6,4 +6,4 @@ matplotlib
 plotly
 requests
 python-dotenv
-kaggle  # only for src/fetch_external.py
+kaggle  # optional; only for --include-kaggle downloads

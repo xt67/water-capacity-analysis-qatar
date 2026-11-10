@@ -21,6 +21,8 @@ CH = ROOT / "charts"
 CH.mkdir(exist_ok=True)
 PRODUCTION_MIGD = 537        # context: national production capacity (2023)
 STORAGE_TARGET_MIG = 2400    # context: programme target
+OFFICIAL_NATIONAL_MIG = 2417.2  # KAHRAMAA Annual Statistics Report 2023
+OFFICIAL_NATIONAL_M3 = 10_987_273
 
 TIER_COLORS = {"Very large": "#0b3c5d", "Large": "#328cc1",
                "Small": "#8fc1e3", "Very small": "#d9e6f2"}
@@ -33,6 +35,8 @@ op = cl.sort_values("total_installed_mig", ascending=False).reset_index(drop=Tru
 total_mig = op["total_installed_mig"].sum()
 total_m3 = op["total_installed_m3"].sum()
 cover_days = total_mig / PRODUCTION_MIGD
+reconciliation_mig = total_mig - OFFICIAL_NATIONAL_MIG
+reconciliation_m3 = total_m3 - OFFICIAL_NATIONAL_M3
 
 plt.rcParams.update({"font.size": 10, "axes.spines.top": False, "axes.spines.right": False})
 
@@ -79,7 +83,7 @@ ax.plot([0, 1], [0, 1], "--", color="grey", label="Perfect equality")
 ax.fill_between(x, lor, x, color="#8fc1e3", alpha=0.4)
 ax.set_xlabel("Cumulative share of stations")
 ax.set_ylabel("Cumulative share of capacity")
-ax.set_title(f"Concentration of storage (Gini = {ml['gini']})", loc="left")
+ax.set_title(f"Concentration of station-file storage (Gini = {ml['gini']})", loc="left")
 ax.legend(frameon=False)
 save(fig, "03_lorenz_curve.png")
 
@@ -151,11 +155,13 @@ fig.update_layout(
     annotations=list(fig.layout.annotations) + [
         dict(xref="paper", yref="paper", x=0.01, y=1.12, showarrow=False, xanchor="left",
              align="left", font=dict(size=14),
-             text=(f"<b>{total_mig:,.0f} MIG</b> installed ({total_m3 / 1e6:.2f} M m³) · "
+             text=(f"<b>Station-file subtotal: {total_mig:,.2f} MIG</b> ({total_m3:,.0f} m³) · "
                    f"<b>{len(op)}</b> operational stations · "
-                   f"<b>{ml['top5_share_pct']}%</b> in top 5 · Gini <b>{ml['gini']}</b> · "
-                   f"≈ <b>{cover_days:.1f} days</b> of storage at {PRODUCTION_MIGD} MIGD "
-                   f"production"))])
+                   f"<b>{ml['top5_share_pct']}%</b> in top 5 · Gini <b>{ml['gini']}</b><br>"
+                   f"Official KAHRAMAA 2023 national total: {OFFICIAL_NATIONAL_MIG:,.1f} MIG "
+                   f"({OFFICIAL_NATIONAL_M3:,.0f} m³) · "
+                   f"Station reconciliation variance: {reconciliation_mig:+,.2f} MIG / "
+                   f"{reconciliation_m3:+,.0f} m³"))])
 html = fig.to_html(include_plotlyjs="cdn", full_html=True)
 (ROOT / "dashboard" / "dashboard.html").write_text(html)
 print("charts:", sorted(p.name for p in CH.iterdir()), "| storage cover days:", round(cover_days, 2))

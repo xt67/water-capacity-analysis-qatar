@@ -8,7 +8,8 @@ Fixes over the original CSV:
     (station_type, status, commissioned_on)
   * every row is validated: installed = operating + non-operating, and m3
     agrees with MIG at the 4,545.45 m3/MIG factor used in the source sheet
-The reporting year stays 2023, as in the source data.
+The reporting year stays 2023, as in the source data. This is separate from
+the internship completion date (July 2025).
 """
 from pathlib import Path
 import re

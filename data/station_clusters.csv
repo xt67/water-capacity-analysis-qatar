@@ -1,39 +1,39 @@
-station_name,total_installed_mig,total_installed_m3,station_type,tier,share_pct,cum_share_pct,robust_z,anomaly_score,is_outlier
-Rawdat Rashed PRPS,386.0,1754545.0,Mega PRPS,Very large,15.98,15.98,1.866,0.626,False
-Umm Salal PRPS,386.0,1754545.0,Mega PRPS,Very large,15.98,31.96,1.866,0.626,False
-Thumama PRPS,261.0,1186364.0,Mega PRPS,Very large,10.805,42.765,1.621,0.612,False
-Abu Nakhla PRPS,194.0,881818.0,Mega PRPS,Very large,8.031,50.796,1.436,0.521,False
-Umm Birka PRPS,194.0,881818.0,Mega PRPS,Very large,8.031,58.828,1.436,0.521,False
-Duhail,142.0,645455.0,Standard RPS,Very large,5.879,64.706,1.241,0.542,False
-Mesaimeer,108.0,490909.0,Standard RPS,Very large,4.471,69.177,1.071,0.487,False
-Muaither,105.0,477273.0,Standard RPS,Very large,4.347,73.524,1.053,0.485,False
-Doha South,84.0,381818.0,Standard RPS,Very large,3.478,77.002,0.914,0.497,False
-Umm Qarn,71.0,322727.0,Standard RPS,Large,2.939,79.941,0.809,0.494,False
-West Bay,56.0,254545.0,Standard RPS,Large,2.318,82.26,0.66,0.479,False
-Salwa Industrial,51.0,231818.0,Standard RPS,Large,2.111,84.371,0.602,0.462,False
-Garrafa,50.0,227273.0,Standard RPS,Large,2.07,86.441,0.59,0.466,False
-Wukair,36.0,163636.0,Standard RPS,Large,1.49,87.931,0.385,0.453,False
-Bani Hajr,36.0,163636.0,Standard RPS,Large,1.49,89.422,0.385,0.453,False
-New Salwa,30.0,136364.0,Standard RPS,Large,1.242,90.663,0.271,0.463,False
-Messaieed Industrial,28.0,127273.0,Standard RPS,Large,1.159,91.823,0.228,0.46,False
-Messaieed Town,24.0,109091.0,Standard RPS,Large,0.994,92.816,0.131,0.461,False
-Airport,21.0,95455.0,Standard RPS,Large,0.869,93.686,0.048,0.467,False
-Al Khor 3,18.0,81818.0,Standard RPS,Large,0.745,94.431,-0.048,0.446,False
-Umm Salal 2,18.0,81818.0,Standard RPS,Large,0.745,95.176,-0.048,0.446,False
-Lusail RPS1,14.0,63636.0,Standard RPS,Small,0.58,95.756,-0.205,0.473,False
-Shahaniyah 3,12.0,54545.0,Standard RPS,Small,0.497,96.252,-0.301,0.45,False
-Shahaniyah 2,12.0,54545.0,Standard RPS,Small,0.497,96.749,-0.301,0.45,False
-Wakrah,10.0,45455.0,Standard RPS,Small,0.414,97.163,-0.415,0.452,False
-Madinat Shamal,10.0,45455.0,Standard RPS,Small,0.414,97.577,-0.415,0.452,False
-Lusail RPS2,8.36,38000.0,Standard RPS,Small,0.346,97.923,-0.527,0.467,False
-Small & Medium,7.97,36209.0,Standard RPS,Small,0.33,98.253,-0.557,0.47,False
-Labor City,6.6,30000.0,Standard RPS,Small,0.273,98.526,-0.674,0.461,False
-Lusail RPS4,6.6,30000.0,Standard RPS,Small,0.273,98.799,-0.674,0.461,False
-Al Khor 2,6.0,27273.0,Standard RPS,Small,0.248,99.048,-0.734,0.471,False
-Kaaban,6.0,27273.0,Standard RPS,Small,0.248,99.296,-0.734,0.471,False
-Umm Salal 1,6.0,27273.0,Standard RPS,Small,0.248,99.545,-0.734,0.471,False
-Pearl of Qatar,4.0,18182.0,Standard RPS,Small,0.166,99.71,-0.987,0.576,False
-Al Khor 1,4.0,18182.0,Standard RPS,Small,0.166,99.876,-0.987,0.576,False
-Jeryan,1.0,4545.0,Standard RPS,Very small,0.041,99.917,-1.853,0.683,True
-Peninsula,1.0,4545.0,Standard RPS,Very small,0.041,99.959,-1.853,0.683,True
-Guwairiyah,1.0,4545.0,Standard RPS,Very small,0.041,100.0,-1.853,0.683,True
+station_name,total_installed_mig,total_installed_m3,station_type,tier,share_pct,cum_share_pct,robust_z,size_rarity_flag,size_rarity_label
+Rawdat Rashed PRPS,386.0,1754545.0,Mega PRPS,Very large,15.98,15.98,1.866,False,Within robust size range
+Umm Salal PRPS,386.0,1754545.0,Mega PRPS,Very large,15.98,31.96,1.866,False,Within robust size range
+Thumama PRPS,261.0,1186364.0,Mega PRPS,Very large,10.805,42.765,1.621,False,Within robust size range
+Abu Nakhla PRPS,194.0,881818.0,Mega PRPS,Very large,8.031,50.796,1.436,False,Within robust size range
+Umm Birka PRPS,194.0,881818.0,Mega PRPS,Very large,8.031,58.828,1.436,False,Within robust size range
+Duhail,142.0,645455.0,Standard RPS,Very large,5.879,64.706,1.241,False,Within robust size range
+Mesaimeer,108.0,490909.0,Standard RPS,Very large,4.471,69.177,1.071,False,Within robust size range
+Muaither,105.0,477273.0,Standard RPS,Very large,4.347,73.524,1.053,False,Within robust size range
+Doha South,84.0,381818.0,Standard RPS,Very large,3.478,77.002,0.914,False,Within robust size range
+Umm Qarn,71.0,322727.0,Standard RPS,Large,2.939,79.941,0.809,False,Within robust size range
+West Bay,56.0,254545.0,Standard RPS,Large,2.318,82.26,0.66,False,Within robust size range
+Salwa Industrial,51.0,231818.0,Standard RPS,Large,2.111,84.371,0.602,False,Within robust size range
+Garrafa,50.0,227273.0,Standard RPS,Large,2.07,86.441,0.59,False,Within robust size range
+Wukair,36.0,163636.0,Standard RPS,Large,1.49,87.931,0.385,False,Within robust size range
+Bani Hajr,36.0,163636.0,Standard RPS,Large,1.49,89.422,0.385,False,Within robust size range
+New Salwa,30.0,136364.0,Standard RPS,Large,1.242,90.663,0.271,False,Within robust size range
+Messaieed Industrial,28.0,127273.0,Standard RPS,Large,1.159,91.823,0.228,False,Within robust size range
+Messaieed Town,24.0,109091.0,Standard RPS,Large,0.994,92.816,0.131,False,Within robust size range
+Airport,21.0,95455.0,Standard RPS,Large,0.869,93.686,0.048,False,Within robust size range
+Al Khor 3,18.0,81818.0,Standard RPS,Large,0.745,94.431,-0.048,False,Within robust size range
+Umm Salal 2,18.0,81818.0,Standard RPS,Large,0.745,95.176,-0.048,False,Within robust size range
+Lusail RPS1,14.0,63636.0,Standard RPS,Small,0.58,95.756,-0.205,False,Within robust size range
+Shahaniyah 3,12.0,54545.0,Standard RPS,Small,0.497,96.252,-0.301,False,Within robust size range
+Shahaniyah 2,12.0,54545.0,Standard RPS,Small,0.497,96.749,-0.301,False,Within robust size range
+Wakrah,10.0,45455.0,Standard RPS,Small,0.414,97.163,-0.415,False,Within robust size range
+Madinat Shamal,10.0,45455.0,Standard RPS,Small,0.414,97.577,-0.415,False,Within robust size range
+Lusail RPS2,8.36,38000.0,Standard RPS,Small,0.346,97.923,-0.527,False,Within robust size range
+Small & Medium,7.97,36209.0,Standard RPS,Small,0.33,98.253,-0.557,False,Within robust size range
+Labor City,6.6,30000.0,Standard RPS,Small,0.273,98.526,-0.674,False,Within robust size range
+Lusail RPS4,6.6,30000.0,Standard RPS,Small,0.273,98.799,-0.674,False,Within robust size range
+Al Khor 2,6.0,27273.0,Standard RPS,Small,0.248,99.048,-0.734,False,Within robust size range
+Kaaban,6.0,27273.0,Standard RPS,Small,0.248,99.296,-0.734,False,Within robust size range
+Umm Salal 1,6.0,27273.0,Standard RPS,Small,0.248,99.545,-0.734,False,Within robust size range
+Pearl of Qatar,4.0,18182.0,Standard RPS,Small,0.166,99.71,-0.987,False,Within robust size range
+Al Khor 1,4.0,18182.0,Standard RPS,Small,0.166,99.876,-0.987,False,Within robust size range
+Jeryan,1.0,4545.0,Standard RPS,Very small,0.041,99.917,-1.853,False,Within robust size range
+Peninsula,1.0,4545.0,Standard RPS,Very small,0.041,99.959,-1.853,False,Within robust size range
+Guwairiyah,1.0,4545.0,Standard RPS,Very small,0.041,100.0,-1.853,False,Within robust size range

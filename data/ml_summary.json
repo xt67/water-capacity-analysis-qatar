@@ -32,9 +32,6 @@
   "gini": 0.673,
   "top5_share_pct": 58.8,
   "top10_share_pct": 79.9,
-  "outliers": [
-    "Jeryan",
-    "Guwairiyah",
-    "Peninsula"
-  ]
+  "size_rarity_flags": [],
+  "interpretation": "Capacity rarity only; not operational faults or failures."
 }
