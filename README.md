@@ -69,19 +69,7 @@ not be fabricated from this cross-sectional snapshot.
 A minimal interactive dashboard (`app.py`) reads the committed files in `data/`, so it needs no
 database, API key or pipeline run.
 
-```bash
-pip install -r requirements.txt
-streamlit run app.py
-```
-
-**Deploy on Streamlit Community Cloud (free):**
-1. Push this repo to GitHub (the repo must be public, or your Streamlit account must be linked to it).
-2. Go to [share.streamlit.io](https://share.streamlit.io) → **Create app** → **Deploy a public app from GitHub**.
-3. Repository: `xt67/water-capacity-analysis-qatar` · Branch: `main` · Main file path: `app.py`.
-4. Deploy. Streamlit installs `requirements.txt` (only streamlit, pandas, plotly) automatically.
-
-After deploying, paste the app URL at the top of this README. To refresh the data, rerun the
-pipeline below and commit the updated files in `data/`; the app picks them up on the next deploy.
+https://water-capacity-analysis.streamlit.app/
 
 ## Reproduce locally
 
